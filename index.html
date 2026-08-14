@@ -148,11 +148,12 @@
 
     <ul id="shoppingList"></ul>
 
+    <!-- Dieser Button löscht nur abgehakte Einträge und lässt offene stehen -->
     <button class="btn-clear" onclick="clearCompleted()">🗑️ Erledigte löschen</button>
 </div>
 
 <script>
-    // Lädt bereits gespeicherte Einträge oder verwendet Standard-Testdaten
+    // Lädt gespeicherte Einträge aus dem Browser-Speicher oder setzt Standard-Werte
     let items = JSON.parse(localStorage.getItem('shoppingList')) || [
         { text: "Milch", completed: false },
         { text: "Brot", completed: true },
@@ -195,8 +196,8 @@
         renderList();
     }
 
+    // Funktion zum Löschen aller abgehakten Einträge
     function clearCompleted() {
-        // Entfernt alle erledigten Punkte aus dem Array
         items = items.filter(item => !item.completed);
         renderList();
     }
